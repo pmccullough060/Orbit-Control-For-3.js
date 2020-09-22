@@ -25,18 +25,11 @@ function initScene(){
 
 var control = new rotationControls(scene1, camera1, renderer1, document);
 
-//testing
-console.log(control.hasOwnProperty('scene'));
-console.log(control.hasOwnProperty('camera'));
-console.log(control.hasOwnProperty('renderer'));
-//testing 
-
 control.add();
 
 window.addEventListener('resize', () => {
     renderer1.setSize(window.innerWidth, window.innerHeight);
     camera1.aspect = window.innerWidth / window.innerHeight;
-
     camera1.updateProjectionMatrix();
 });
 

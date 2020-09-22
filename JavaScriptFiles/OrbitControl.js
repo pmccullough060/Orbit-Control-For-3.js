@@ -7,13 +7,12 @@ class rotationControls{
         this.camera = inputCamera;
         this.renderer = inputRenderer;
         this.document = inputDocument;
-    }
+    };
 
     add(){
         var camera = this.camera;
         var renderer = this.renderer;
         var scene = this.scene;
-        var document = this.document;
 
         var onClickStartX = null;
         var onClickStartY = null;
@@ -41,9 +40,9 @@ class rotationControls{
             onClickStartY = null;
         };
 
-        document.addEventListener("mousedown", onMouseDown);
-        document.addEventListener("mouseup", onMouseUp);
-        document.addEventListener("mousemove", onMouseMove);
+        this.document.addEventListener("mousedown", onMouseDown);
+        this.document.addEventListener("mouseup", onMouseUp);
+        this.document.addEventListener("mousemove", onMouseMove);
 
         function CalculateCameraPositions(deltaX, deltaY){
             
