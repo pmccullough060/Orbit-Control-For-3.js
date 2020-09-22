@@ -7,12 +7,17 @@ class rotationControls{
         this.camera = inputCamera;
         this.renderer = inputRenderer;
         this.document = inputDocument;
-    };
+    }
+    Add(){
 
-    add(){
+        //clunky but this allows me to use the variables in method functions
+        //As all objects are passed by ref in ES6 this works fine
+        //For simplicity this is a single method that handles multiple tasks - subdivided into functions
+
         var camera = this.camera;
         var renderer = this.renderer;
         var scene = this.scene;
+        var document = this.document;
 
         var onClickStartX = null;
         var onClickStartY = null;
@@ -40,9 +45,9 @@ class rotationControls{
             onClickStartY = null;
         };
 
-        this.document.addEventListener("mousedown", onMouseDown);
-        this.document.addEventListener("mouseup", onMouseUp);
-        this.document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mousedown", onMouseDown);
+        document.addEventListener("mouseup", onMouseUp);
+        document.addEventListener("mousemove", onMouseMove);
 
         function CalculateCameraPositions(deltaX, deltaY){
             
@@ -70,9 +75,8 @@ class rotationControls{
             Refresh();
         }
 
-        var frameId = 0;
-
         function Refresh(){
+            var frameId = 0;
             cancelAnimationFrame(frameId);
             frameId = requestAnimationFrame(renderFrame)
         };

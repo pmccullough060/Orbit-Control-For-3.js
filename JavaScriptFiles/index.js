@@ -1,55 +1,54 @@
 "use strict";
 
-var scene1, camera1, renderer1;
+var scene, camera, renderer;
 
 initScene();
 
 function initScene(){
 
-    scene1 = new THREE.Scene();
+    scene = new THREE.Scene();
     
-    camera1 = new THREE.PerspectiveCamera(75, window.innerWidth/ window.innerHeight, 0.1, 1000);
-    camera1.up = new THREE.Vector3(0, 0, 1);
-    camera1.position.x = 5;
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth/ window.innerHeight, 0.1, 1000);
+    camera.up = new THREE.Vector3(0, 0, 1);
+    camera.position.x = 5;
 
     var centre = new THREE.Vector3();
 
-    camera1.lookAt(centre);
+    camera.lookAt(centre);
     
-    renderer1 = new THREE.WebGLRenderer({antialias: true});
-    renderer1.setSize(window.innerWidth, window.innerHeight);
-    renderer1.setClearColor("#e5e5e5");
+    renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor("#e5e5e5");
     
-    document.body.appendChild(renderer1.domElement);
+    document.body.appendChild(renderer.domElement);
 };
 
-var control = new rotationControls(scene1, camera1, renderer1, document);
+var control = new rotationControls(scene, camera, renderer, document);
 
-control.add();
+control.Add();
 
 window.addEventListener('resize', () => {
-    renderer1.setSize(window.innerWidth, window.innerHeight);
-    camera1.aspect = window.innerWidth / window.innerHeight;
-    camera1.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
 });
-
 
 var geometry = new THREE.BoxGeometry(1,1,1);
 var material = new THREE.MeshLambertMaterial({color: 0xFFCC00});
 var mesh = new THREE.Mesh(geometry, material);
 
-scene1.add(mesh);
+scene.add(mesh);
 
 var color = new THREE.Color(0.2, 0.2, 0.2);
 var ambient = new THREE.AmbientLight(color.getHex());
-scene1.add(ambient);
+scene.add(ambient);
 
 var light = new THREE.PointLight(0xFFFFFF);
 light.position.x = 5;
 light.position.y = 5;
-scene1.add(light);
+scene.add(light);
 
 var axisHelper = new THREE.AxesHelper(5);
-scene1.add(axisHelper);
+scene.add(axisHelper);
 
-renderer1.render(scene1, camera1);
+renderer.render(scene, camera);
