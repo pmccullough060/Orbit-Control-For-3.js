@@ -10,12 +10,10 @@ class rotationControls{
     }
 
     add(){
-        //need to read ES6 docs about classes to understand this fully
-        //objects passed by ref in javascript??
-
         var camera = this.camera;
         var renderer = this.renderer;
         var scene = this.scene;
+        var document = this.document;
 
         var onClickStartX = null;
         var onClickStartY = null;

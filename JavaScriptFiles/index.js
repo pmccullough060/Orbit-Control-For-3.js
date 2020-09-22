@@ -23,7 +23,7 @@ function initScene(){
     document.body.appendChild(renderer1.domElement);
 };
 
-var control = new rotationControls(scene1, camera1, renderer1);
+var control = new rotationControls(scene1, camera1, renderer1, document);
 
 //testing
 console.log(control.hasOwnProperty('scene'));
