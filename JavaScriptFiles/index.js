@@ -24,7 +24,6 @@ function initScene(){
 };
 
 var control = new rotationControls(scene, camera, renderer, document);
-
 control.Add();
 
 window.addEventListener('resize', () => {
