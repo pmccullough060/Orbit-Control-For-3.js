@@ -16,10 +16,14 @@ This project requires <a href="https://threejs.org/docs/#manual/en/introduction/
 Add the OrbitControl.js file to your project, then instantiate a new rotationControls object:
 
 ```javascript
+//example
+
 scene = new THREE.Scene();
 camera = new THREE.Camera();
 renderer = new THREE.WebGLRenderer({antialias: true});
 
 var orbitControl = new rotationControls(scene, camera, renderer, document);
 orbitControl.Add()
+
+//the scene will now rotate with a mouse click and drag
 ```
