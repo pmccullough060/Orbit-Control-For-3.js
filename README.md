@@ -7,7 +7,7 @@ A simple orbit control for the 3.js library
 <!-- About The Porject -->
 
 ## About The Project
-This project is a simple orbit controller written in Javascript for the Three.js library, which allows the user to "rotate" (the camera is actually orbiting) the object by clicking and dragging the mouse anywhere in the Three.js renderer element. This repo contains the OrbitControl.js file as well as a sample scene demonstrating how it works.
+This project is a simple orbit controller written in JavaScript for the Three.js library, which allows the user to "rotate" (the camera is actually orbiting) the object by clicking and dragging the mouse anywhere in the Three.js renderer element. This repo contains the OrbitControl.js file as well as a sample scene demonstrating how it works.
 
 <!-- Prerequisites -->
 ## Prerequisites
