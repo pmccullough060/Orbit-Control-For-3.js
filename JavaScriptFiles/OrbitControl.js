@@ -8,81 +8,67 @@ class rotationControls{
         this.renderer = inputRenderer;
         this.document = inputDocument;
     }
+
     Add(){
-
-        //clunky but this allows me to use the variables in method functions
-        //As all objects are passed by ref in ES6 this works fine
-        //For simplicity this is a single method that handles multiple tasks - subdivided into functions
-
-        var camera = this.camera;
-        var renderer = this.renderer;
-        var scene = this.scene;
-        var document = this.document;
-
         var onClickStartX = null;
         var onClickStartY = null;
+        const $this = this;
 
         function onMouseDown( event ){
-
             onClickStartX = event.clientX;
             onClickStartY = event.clientY;
-        };
+        }
 
         function onMouseMove( event ){
             if(onClickStartX === null || onClickStartY === null){
                 return;
             }
             else{
-                CalculateCameraPositions(event.clientX - onClickStartX,  event.clientY - onClickStartY);
-            };
-        };
-
+                $this.CalculateCameraPositions(event.clientX - onClickStartX,  event.clientY - onClickStartY);
+            }
+        }
+        
         function onMouseUp( event ){
 
-            CalculateCameraPositions(event.clientX - onClickStartX, event.clientY - onClickStartY);
-
+            $this.CalculateCameraPositions(event.clientX - onClickStartX, event.clientY - onClickStartY);
             onClickStartX = null;
             onClickStartY = null;
-        };
-
-        document.addEventListener("mousedown", onMouseDown);
-        document.addEventListener("mouseup", onMouseUp);
-        document.addEventListener("mousemove", onMouseMove);
-
-        function CalculateCameraPositions(deltaX, deltaY){
-            
-            var sensitivity = 5000;
-            var radianPerPixel = (Math.PI / sensitivity);
-            var deltaPhi = radianPerPixel * deltaX;
-            var deltaTheta = radianPerPixel * deltaY;
-            var centre = new THREE.Vector3();
-            var cameraPosition = camera.position.sub(centre);
-            var radius = cameraPosition.length();
-            var theta = Math.acos(cameraPosition.z / radius);
-            var phi = Math.atan2(cameraPosition.y, cameraPosition.x);
-
-            theta = Math.min(Math.max(theta - deltaTheta, 0), Math.PI);
-
-            phi -= deltaPhi;
-
-            cameraPosition.x = radius * Math.sin(theta) * Math.cos(phi);
-            cameraPosition.y = radius * Math.sin(theta) * Math.sin(phi);
-            cameraPosition.z = radius * Math.cos(theta);
-
-            camera.position.add(centre);
-            camera.lookAt(centre);
-
-            Refresh();
         }
 
-        function Refresh(){
-            var frameId = 0;
-            cancelAnimationFrame(frameId);
-            frameId = requestAnimationFrame(renderFrame)
-        };
+        this.document.addEventListener("mousedown", onMouseDown);
+        this.document.addEventListener("mouseup", onMouseUp);
+        this.document.addEventListener("mousemove", onMouseMove);
+        }
 
-        function renderFrame(){
-            renderer.render(scene, camera);
-        };
-    };
-};
+    CalculateCameraPositions(deltaX, deltaY){
+
+        const sensitivity = 5000;
+        var radianPerPixel = (Math.PI / sensitivity);
+        var deltaPhi = radianPerPixel * deltaX;
+        var deltaTheta = radianPerPixel * deltaY;
+        var centre = new THREE.Vector3();
+        var cameraPosition = this.camera.position.sub(centre);
+        var radius = cameraPosition.length();
+        var theta = Math.acos(cameraPosition.z / radius);
+        var phi = Math.atan2(cameraPosition.y, cameraPosition.x);
+
+        theta = Math.min(Math.max(theta - deltaTheta, 0), Math.PI);
+
+        phi -= deltaPhi;
+
+        cameraPosition.x = radius * Math.sin(theta) * Math.cos(phi);
+        cameraPosition.y = radius * Math.sin(theta) * Math.sin(phi);
+        cameraPosition.z = radius * Math.cos(theta);
+
+        this.camera.position.add(centre);
+        this.camera.lookAt(centre);
+
+        this.RenderFrame();
+        }
+
+    RenderFrame(){
+        this.renderer.render(this.scene, this.camera);
+    }
+}
+
+
