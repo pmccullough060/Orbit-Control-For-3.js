@@ -2,4 +2,8 @@
 A simple orbit control for the 3.js library
 <!-- About The Porject -->
 
-## About
+## About The Project
+
+<!-- Image will go here -->
+
+This is a simple orbit control class written in Javascript for the 3.js library.
