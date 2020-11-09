@@ -1,5 +1,4 @@
 # Orbit-Control-For-3.js
-A simple orbit control for the 3.js library
 
 ![image](https://github.com/pmccullough060/Orbit-Control-For-3.js/blob/master/RepoImages/OrbitControlExample.gif)
 
